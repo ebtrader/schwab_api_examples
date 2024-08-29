@@ -1,4 +1,5 @@
 import schwabdev
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from time import sleep
 import os
@@ -12,7 +13,7 @@ def main():
     client = schwabdev.Client(os.getenv('app_key'), os.getenv('app_secret'), os.getenv('callback_url'), tokens_file="tokens.json", timeout=5, verbose=False, update_tokens_auto=True)
 
     # print account hash
-    account_hash = 'my_hash_key'
+    account_hash = 'my-account-hash'
     # print(account_hash)
     sleep(3)
 
@@ -24,7 +25,7 @@ def main():
     order = {"complexOrderStrategyType": "NONE", "orderType": "LIMIT", "session": "NORMAL", "duration": "DAY", "orderStrategyType": "SINGLE",
              "price": '0.30',
              "orderLegCollection": [
-                 {"instruction": "BUY_TO_OPEN", "quantity": 1, "instrument": {"symbol": "SPY 240830C00560000", "assetType": "OPTION"}}]}
+                 {"instruction": "BUY_TO_OPEN", "quantity": 1, "instrument": {"symbol": "SPY   240830C00561000", "assetType": "OPTION"}}]}
 
 
     resp = client.order_place(account_hash, order)
